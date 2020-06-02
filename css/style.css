@@ -1,0 +1,134 @@
+body {
+}
+
+/* Layout */
+.ba-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1200px;
+}
+
+/* Typography */
+a,
+input[type='submit'],
+input[type='button'],
+button {
+  transition: color 0.3s ease-in, border-color 0.3s ease-in,
+    background-color 0.3s ease-in, opacity 0.3s ease-in;
+}
+input[type='submit'],
+input[type='button'],
+button,
+.ba-button {
+  display: inline-block;
+}
+input[type='submit']:hover,
+input[type='button']:hover,
+button:hover,
+.ba-button:hover {
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='tel'],
+textarea,
+select {
+  transition: color 0.3s ease-in, border-color 0.3s ease-in,
+    background-color 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='password']:focus,
+input[type='number']:focus,
+input[type='tel']:focus,
+textarea:focus,
+select:focus {
+}
+textarea {
+}
+
+:root {
+  --top: 50%;
+  --left: 50%;
+  --invTop: -50%;
+  --invLeft: -50%;
+}
+
+.ba-section {
+  background: #123;
+}
+
+.ba-soccer-field {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ba-field {
+  border: 5px solid #fff;
+  width: 50%;
+  height: 50%;
+  background-color: green;
+  cursor: pointer;
+  position: relative;
+}
+
+.ba-field:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 10%;
+  height: 30%;
+  transform: translateY(-50%);
+  border: 2px solid #fff;
+  border-left: none;
+}
+
+.ba-field:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 10%;
+  height: 30%;
+  transform: translateY(-50%);
+  border: 2px solid #fff;
+  border-right: none;
+}
+
+.ba-field__center {
+  position: absolute;
+  content: '';
+  border-right: 2px solid #fff;
+  top: 0;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.ba-field__center:after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 20%;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.ba-ball {
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  transform: translate(var(--invTop), var(--invLeft));
+  z-index: 2;
+
+  transition: top 1s, left 1s;
+}
