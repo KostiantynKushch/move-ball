@@ -3,32 +3,37 @@
 const field = document.querySelector('.ba-field');
 const ball = document.querySelector('.ba-ball');
 const coord = field.getBoundingClientRect();
+const rightBorder = coord.right - coord.left;
+const bottomBorder = coord.bottom - coord.top;
 
 
 field.addEventListener('click', () => {
+	//pointer coord
 	const leftPos = event.clientX - coord.left;
 	const topPos = event.clientY - coord.top;
-	const rightBorder = coord.right - coord.left;
-	const bottomBorder = coord.bottom - coord.top;
 
-	document.documentElement.style.setProperty('--top', `${topPos - 5}px`);
-	document.documentElement.style.setProperty('--left', `${leftPos - 5}px`);
+	//move ball
+	setPositionProperty('--top', `${topPos - 5}px`);
+	setPositionProperty('--left', `${leftPos - 5}px`);
 
-	console.log(leftPos, topPos);
-
+	//restrick movment by border
 	if (leftPos <= 20) {
-		document.documentElement.style.setProperty('--left', `20px`);
+		setPositionProperty('--left', `20px`);
 	}
 
 	if (topPos <= 20) {
-		document.documentElement.style.setProperty('--top', `20px`);
+		setPositionProperty('--top', `20px`);
 	}
 
 	if (leftPos >= rightBorder - 20) {
-		document.documentElement.style.setProperty('--left', `${rightBorder - 30}px`);
+		setPositionProperty('--left', `${rightBorder - 30}px`);
 	}
 
 	if (topPos >= bottomBorder - 20) {
-		document.documentElement.style.setProperty('--top', `${bottomBorder - 30}px`);
+		setPositionProperty('--top', `${bottomBorder - 30}px`);
 	}
 });
+
+function setPositionProperty(name, value) {
+	document.documentElement.style.setProperty(`${name}`, `${value}`);
+}
